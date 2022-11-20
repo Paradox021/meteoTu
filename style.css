@@ -14,12 +14,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-#temp{
+#city{
+  text-align: center;
+}
+.temp{
   padding-top: 0.5em;
   text-align: center;
   font-size: 5em;
 }
-#desc{
+.desc{
   text-align: center;
   margin-top: 1.5em;
 }
@@ -28,6 +31,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.bot{
+  display: flex;
+  border-top: 1px solid white;
+  margin-top: 1.5em;
+  padding-top: 1.5em;
+  text-align: center;
+  justify-content: space-evenly;
 }
 
 .container{

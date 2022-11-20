@@ -6,13 +6,20 @@ const temp = document.getElementById("temp")
 const desc = document.getElementById("desc")
 const temp1 = document.getElementById("temp1")
 const desc1 = document.getElementById("desc1")
+const temp2 = document.getElementById("temp2")
+const desc2 = document.getElementById("desc2")
 
 document.getElementById("city").addEventListener("change", async (city) => {
     
-    const forecast = await (await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?rapidapi-key=${apiKey}&q=${city.target.value}`)).json()
+    const forecast = await (await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?rapidapi-key=${apiKey}&q=${city.target.value}&days=3`)).json()
     
     temp.innerHTML = await Math.round(forecast.current.temp_c)+'º'
     desc.innerHTML = await forecast.current.condition.text
 
+    temp1.innerHTML = await Math.round(forecast.forecast.forecastday[1].day.avgtemp_c)+'º'
+    desc1.innerHTML = await forecast.forecast.forecastday[1].day.condition.text
+
+    temp2.innerHTML = await Math.round(forecast.forecast.forecastday[2].day.avgtemp_c)+'º'
+    desc2.innerHTML = await forecast.forecast.forecastday[2].day.condition.text
 } )
 
