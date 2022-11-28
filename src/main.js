@@ -23,7 +23,7 @@ function handleClickGeo(event){
     navigator.geolocation.getCurrentPosition(async position => {
         const lat = position.coords.latitude
         const lon = position.coords.longitude
-        const forecast = await (await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?rapidapi-key=${apiKey}&lat=${lat}&lon=${lon}&days=3`)).json()
+        const forecast = await (await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?rapidapi-key=${apiKey}&q=${lat +","+lon}&days=3`)).json()
         setForecast(forecast)
     })
 }
