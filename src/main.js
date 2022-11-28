@@ -12,6 +12,23 @@ const desc2 = document.getElementById("desc2")
 document.getElementById("city").addEventListener("change", async (city) => {
     
     const forecast = await (await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?rapidapi-key=${apiKey}&q=${city.target.value}&days=3`)).json()
+    setForecast(forecast)
+} )
+
+
+document.getElementById('geo').addEventListener('click', handleClickGeo)
+
+function handleClickGeo(event){
+    if(!navigator.geolocation) return
+    navigator.geolocation.getCurrentPosition(async position => {
+        const lat = position.coords.latitude
+        const lon = position.coords.longitude
+        const forecast = await (await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?rapidapi-key=${apiKey}&lat=${lat}&lon=${lon}&days=3`)).json()
+        setForecast(forecast)
+    })
+}
+
+async function setForecast(forecast){
     
     temp.innerHTML = await Math.round(forecast.current.temp_c)+'º'
     desc.innerHTML = await forecast.current.condition.text
@@ -21,5 +38,5 @@ document.getElementById("city").addEventListener("change", async (city) => {
 
     temp2.innerHTML = await Math.round(forecast.forecast.forecastday[2].day.avgtemp_c)+'º'
     desc2.innerHTML = await forecast.forecast.forecastday[2].day.condition.text
-} )
 
+}
