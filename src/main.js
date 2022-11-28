@@ -18,7 +18,7 @@ document.getElementById("city").addEventListener("change", async (city) => {
 
 document.getElementById('geo').addEventListener('click', handleClickGeo)
 
-function handleClickGeo(event){
+function handleClickGeo(){
     if(!navigator.geolocation) return
     navigator.geolocation.getCurrentPosition(async position => {
         const lat = position.coords.latitude
