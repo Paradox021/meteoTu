@@ -14,9 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-#city{
-  text-align: center;
-}
+
 .temp{
   padding-top: 0.5em;
   text-align: center;

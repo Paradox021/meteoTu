@@ -24,6 +24,7 @@ function handleClickGeo(event){
         const lat = position.coords.latitude
         const lon = position.coords.longitude
         const forecast = await (await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?rapidapi-key=${apiKey}&q=${lat +","+lon}&days=3`)).json()
+        document.getElementById('city').value=forecast.location.name
         setForecast(forecast)
     })
 }
